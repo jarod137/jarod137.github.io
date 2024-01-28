@@ -1,0 +1,69 @@
+.field {
+    position: relative;
+    height: 52px;
+    width: 100%;
+    max-width: 150px;
+    color: white;
+    overflow: hidden;
+}
+
+.field input,
+.field textarea {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    color: white;
+    line-height: 52px;
+    outline: 0;
+    background-color: inherit;
+    padding-top: 25px;
+    border: none;
+    box-sizing: border-box;
+    overflow: hidden; /* This line ensures no scroll bar for textarea */
+}
+
+.field .label-wrapper {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    bottom: 0;
+    background-color: inherit;
+    left: 0;
+    pointer-events: none;
+    border-bottom: 1px solid white;
+}
+
+.field .label-wrapper::after {
+    content: "";
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    border-bottom: 3px solid #00bcd4;
+    left: 0;
+    bottom: -1px;
+    transform: translateX(-100%);
+    transition: transform 0.2s ease;
+}
+
+.field .label-text {
+    position: absolute;
+    bottom: 5px;
+    left: 0px;
+    transition: all 0.2s ease;
+}
+
+.field input:focus + .label-wrapper .label-text,
+.field input:valid + .label-wrapper .label-text,
+.field textarea:focus + .label-wrapper .label-text,
+.field textarea:valid + .label-wrapper .label-text {
+    font-size: 12px;
+    color: #00bcd4;
+    transform: translateY(-150%);
+}
+
+.field input:focus + .label-wrapper::after,
+.field input:valid + .label-wrapper::after,
+.field textarea:focus + .label-wrapper::after,
+.field textarea:valid + .label-wrapper::after {
+    transform: translateX(0%);
+}
