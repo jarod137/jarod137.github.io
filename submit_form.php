@@ -1,16 +1,23 @@
 <?php
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Collect form data
     $name = $_POST["Name"];
     $email = $_POST["Email"];
     $message = $_POST["Message"];
 
-    // You can customize the email subject and content as needed
-    $subject = "New message from $name";
-    $content = "Name: $name\nEmail: $email\nMessage: $message";
+    // Email information
+    $to = "recipient@example.com"; // Replace with your email address
+    $subject = "New Form Submission from $name";
+    $headers = "From: $email";
 
-    // Send email to jarod137@nmsu.edu
-    mail("jarod137@nmsu.edu", $subject, $content);
+    // Compose the email message
+    $email_message = "Name: $name\n\nEmail: $email\n\nMessage:\n$message";
 
-    exit;
+    // Send email
+    if (mail($to, $subject, $email_message, $headers)) {
+        echo "Thank you for your message! We will get back to you soon.";
+    } else {
+        echo "Oops! Something went wrong and we couldn't send your message.";
+    }
 }
 ?>
