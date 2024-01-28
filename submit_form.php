@@ -19,8 +19,7 @@ try {
 
     // Recipients
     $mail->setFrom($email, $name);
-    $mail->addAddress('recipient@example.com'); // Replace with your email address
-
+    $mail->addAddress('jarod1372@gmail.com'); 
     // Content
     $mail->isHTML(false); // Set to true if you want to send HTML emails
     $mail->Subject = "New Form Submission from $name";
